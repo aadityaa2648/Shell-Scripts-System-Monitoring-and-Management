@@ -5,7 +5,7 @@ df -h | sed -e 's/%//' | awk -F" " '$5>80 {print $0}' > data.txt
 # Count the number of lines in data.txt.
 count=$(wc -l data.txt | cut -f1 -d" ")
 
-# If there are any lines in data.txt, send an email with the disk usage details.
+# If there are any lines in data.txt, print the disk usage details to the terminal.
 if [ $count -gt 0 ]; then
-  mail -s "High disk usage on machine - hostname" mukul@gmail.com < data.txt
+  cat data.txt
 fi
